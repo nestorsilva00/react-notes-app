@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
+
+  
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await AuthService.login(email, password).then(
         () => {
-          navigate("/notes");
+          <Navigate to={'notes'}/>
           window.location.reload();
         },
         (error) => {
